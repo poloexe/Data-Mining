@@ -1,3 +1,8 @@
+# NAME: ISEMIN BARUCH EFIOK
+# MATRIC: 23/11951
+# DEPARTMENT: CYBER SECURITY
+# LEVEL: 300
+
 import itertools
 
 # 1. The Dataset
@@ -13,7 +18,7 @@ min_support = 0.60    # 60%
 min_confidence = 0.70 # 70%
 total_transactions = len(transactions)
 
-print(f"--- Processing {total_transactions} Transactions ---")
+print(f"Processing {total_transactions} Transactions....")
 
 # 2. Helper Function: Count Support
 def get_support(itemset):
@@ -25,8 +30,8 @@ def get_support(itemset):
     return count
 
 # 3. Find Frequent Itemsets
-print(f"\n[1] Frequent Itemsets (Min Support: {min_support*100}%)")
-print(f"    (Itemset must appear in at least {min_support * total_transactions} transactions)")
+print(f"\n1. Frequent Itemsets (Min Support: {min_support*100}%)")
+print(f"(Itemset must appear in at least {min_support * total_transactions} transactions)")
 
 all_items = sorted(list(set(item for sublist in transactions for item in sublist)))
 frequent_itemsets = [] # To store valid itemsets for step 4
@@ -41,10 +46,10 @@ for size in range(1, 4):
         
         if support >= min_support:
             frequent_itemsets.append(itemset)
-            print(f"- {itemset}: Found {count} times (Support: {support:.0%})")
+            print(f"-{itemset}: Found {count} times (Support: {support:.0%})")
 
 # 4. Generate Rules
-print(f"\n[2] Association Rules (Min Confidence: {min_confidence*100}%)")
+print(f"\n2. Association Rules (Min Confidence: {min_confidence*100}%)")
 
 # Look at every frequent itemset with more than 1 item
 for itemset in frequent_itemsets:
@@ -74,6 +79,6 @@ for itemset in frequent_itemsets:
                     ant_str = ", ".join(antecedent)
                     con_str = ", ".join(consequent)
                     print(f"Rule: If [{ant_str}] -> Then [{con_str}]")
-                    print(f"    Conf: {confidence:.0%} | Lift: {lift:.2f}")
+                    print(f"    Conf: {confidence:.0%}, Lift: {lift:.2f}")
 
-print("\nDone.")
+print("\nDone")
