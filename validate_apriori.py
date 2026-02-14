@@ -1,12 +1,12 @@
 import itertools
 
-# The Dataset
+# 1. The Dataset
 transactions = [
     ['Bread', 'Milk'],
     ['Bread', 'Diaper', 'Beer', 'Eggs'],
-    ['Milk', 'Diaper', 'Beer', 'Coke'],
+    ['Milk', 'Diaper', 'Beer', 'Cola'],
     ['Bread', 'Milk', 'Diaper', 'Beer'],
-    ['Bread', 'Milk', 'Diaper', 'Coke']
+    ['Bread', 'Milk', 'Diaper', 'Cola']
 ]
 
 min_support = 0.60    # 60%
@@ -15,7 +15,7 @@ total_transactions = len(transactions)
 
 print(f"--- Processing {total_transactions} Transactions ---")
 
-# Helper Function: Count Support
+# 2. Helper Function: Count Support
 def get_support(itemset):
     count = 0
     for row in transactions:
@@ -24,7 +24,7 @@ def get_support(itemset):
             count += 1
     return count
 
-# Find Frequent Itemsets
+# 3. Find Frequent Itemsets
 print(f"\n[1] Frequent Itemsets (Min Support: {min_support*100}%)")
 print(f"    (Itemset must appear in at least {min_support * total_transactions} transactions)")
 
@@ -43,7 +43,7 @@ for size in range(1, 4):
             frequent_itemsets.append(itemset)
             print(f"- {itemset}: Found {count} times (Support: {support:.0%})")
 
-# Generate Rules
+# 4. Generate Rules
 print(f"\n[2] Association Rules (Min Confidence: {min_confidence*100}%)")
 
 # Look at every frequent itemset with more than 1 item
